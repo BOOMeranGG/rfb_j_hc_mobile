@@ -2,28 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_item_home"
-        android:icon="@drawable/ic_action_home"
+        android:id="@+id/item_profile"
+        android:icon="@drawable/ic_action_profile"
         android:title="" />
 
     <item
-        android:id="@+id/nav_item_search"
-        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/item_history"
+        android:icon="@drawable/ic_action_history"
         android:title="" />
 
     <item
-        android:id="@+id/nav_item_share"
-        android:icon="@mipmap/ic_launcher"
-        android:title="" />
-
-    <item
-        android:id="@+id/nav_item_likes"
-        android:icon="@mipmap/ic_launcher"
-        android:title="" />
-
-    <item
-        android:id="@+id/nav_item_profile"
-        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/item_share"
+        android:icon="@drawable/ic_action_add_order"
         android:title="" />
 
 </menu>
