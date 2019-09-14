@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/person_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter full name and password"
+        android:textSize="17sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/person_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/full_name_input"
+        style="@style/login_input"
+        android:inputType="textPersonName"
+        android:hint="Full name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <EditText
+        android:id="@+id/password_input"
+        style="@style/login_input"
+        android:inputType="textPassword"
+        android:hint="Password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/full_name_input"/>
+
+    <RadioButton
+        android:id="@+id/radio_freelancer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/password_input"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_freelancer"
+        style="@style/standard_string"
+        app:layout_constraintStart_toEndOf="@id/radio_freelancer"
+        app:layout_constraintTop_toTopOf="@id/radio_freelancer"
+        app:layout_constraintBottom_toBottomOf="@id/radio_freelancer"
+        android:textSize="19sp"
+        android:text="Я исполнитель"/>
+
+    <RadioButton
+        android:id="@+id/radio_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/radio_freelancer"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_customer"
+        style="@style/standard_string"
+        app:layout_constraintStart_toEndOf="@id/radio_customer"
+        app:layout_constraintTop_toTopOf="@id/radio_customer"
+        app:layout_constraintBottom_toBottomOf="@id/radio_customer"
+        android:textSize="19sp"
+        android:text="Я заказчик"/>
+
+    <Button
+        android:id="@+id/register_button"
+        style="@style/login_button"
+        android:text="Register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_customer"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
