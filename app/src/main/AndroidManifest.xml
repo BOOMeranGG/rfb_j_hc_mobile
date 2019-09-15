@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activities.CreateOrderActivity">
+        <activity android:name=".ui.activities.SearchActivity">
         </activity>
-        <activity android:name=".ui.activities.OrdersActivity">
+        <activity android:name=".ui.activities.OrdersHistoryActivity">
         </activity>
         <activity android:name=".ui.activities.HomeActivity">
         </activity>

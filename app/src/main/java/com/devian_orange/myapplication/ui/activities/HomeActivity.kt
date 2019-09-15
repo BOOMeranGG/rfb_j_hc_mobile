@@ -37,7 +37,7 @@ class HomeActivity : BaseActivity(0) {
         setUpRecycler()
 
         close_image.setOnClickListener {
-            System.exit(0)
+            finish()
         }
     }
 
@@ -60,6 +60,8 @@ class HomeActivity : BaseActivity(0) {
         fun bindPortfolio(info: String) {
             if (adapterPosition != 0) {
                 portfolioView.profile_info.visibility = View.GONE
+            } else {
+                portfolioView.profile_info.visibility = View.VISIBLE
             }
             portfolioView.tv_info.text = info
             setRandomImage(portfolioView.img_preview)

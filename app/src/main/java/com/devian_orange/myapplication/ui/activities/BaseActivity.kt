@@ -24,8 +24,8 @@ abstract class BaseActivity(private val navNumber: Int) : AppCompatActivity() {
         bottom_navigation_view.setOnNavigationItemSelectedListener {
             val nextActivity = when (it.itemId) {
                 R.id.item_profile -> HomeActivity::class.java
-                R.id.item_history -> OrdersActivity::class.java
-                R.id.item_share -> CreateOrderActivity::class.java
+                R.id.item_history -> OrdersHistoryActivity::class.java
+                R.id.item_share -> SearchActivity::class.java
                 else -> {
                     Log.e(TAG, "Unknown nav item clicked $it")
                     null

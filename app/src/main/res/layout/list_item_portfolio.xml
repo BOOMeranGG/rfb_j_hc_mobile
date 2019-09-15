@@ -54,7 +54,10 @@
         android:id="@+id/portfolio_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/whitesh"
+        android:layout_margin="8dp"
+        android:elevation="4dp">
 
         <ImageView
             android:id="@+id/img_preview"
