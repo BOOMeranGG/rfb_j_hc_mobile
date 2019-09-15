@@ -14,6 +14,7 @@ import com.devian_orange.myapplication.model.dto.CustomerDto
 import com.devian_orange.myapplication.model.dto.FeedbackDto
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.close_image
+import kotlinx.android.synthetic.main.list_item_portfolio.*
 import kotlinx.android.synthetic.main.list_item_portfolio.view.*
 import java.util.*
 
@@ -21,92 +22,10 @@ class SearchActivity : BaseActivity(2) {
 
     private var currentIndex = 1
     private val testFeedbackList = listOf(FeedbackDto("Review", 5, "login"))
-    private val testCustomers = listOf(
-        CustomerDto(
-            "login1",
-            "name1",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login2",
-            "name2",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login3",
-            "name3",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login4",
-            "name4",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login5",
-            "name5",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login6",
-            "name6",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login7",
-            "name7",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login8",
-            "name8",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login9",
-            "name9",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        ),
-        CustomerDto(
-            "login0",
-            "name0",
-            5,
-            1,
-            testFeedbackList,
-            listOf("GOOD ONE")
-        )
-    )
     private var portfolioList = listOf(
         "Здесь должна быть информация из вашего портфолио",
         "Roundtable Rival - Lindsey Stirling",
-        "Миша, плиз, придумай описание",
+        "МИША, плиз, придумай описание",
         "FUCK YOU LEATHER MAN",
         "И сново десь должна быть информация из вашего портфолио",
         "Who call the dragon knight?",
@@ -117,19 +36,25 @@ class SearchActivity : BaseActivity(2) {
     )
 
     private var portfolioList2 = listOf(
-        "1111",
-        "2222",
-        "3333",
-        "4444",
-        "5555",
-        "6666",
-        "7777",
-        "8888",
-        "9999",
-        "0000"
+        "Победитель Java Hack",
+        "Работал 2 года в Райфайзен банке"
     )
+
+    private var portfolioList3 = listOf(
+        "Хет трик в финале турнира кожаный мяч",
+        "drop table",
+        "Миссклик"
+    )
+
+    private var photos = listOf(
+        R.drawable.bill,
+        R.drawable.ilon,
+        R.drawable.freelancer5
+    )
+
+
     private var currentList: List<String> = portfolioList
-    private var mainList: List<List<String>> = listOf(portfolioList, portfolioList2)
+    private var mainList: List<List<String>> = listOf(portfolioList, portfolioList2, portfolioList3)
 
     private lateinit var portfolioRecyclerView: RecyclerView
     private lateinit var portfolioAdapter: PortfolioAdapter
@@ -184,7 +109,7 @@ class SearchActivity : BaseActivity(2) {
 
     //TODO("Подгружать следующий аккаунт и выводить данные по нему")
     private fun bindCard() {
-        val top = testCustomers[currentIndex % testCustomers.size]
+        //val top = testCustomers[currentIndex % testCustomers.size]
         //val bot = testCustomers[(currentIndex + 1) % testCustomers.size]
 
         //tv_top.text = top.login
@@ -203,6 +128,7 @@ class SearchActivity : BaseActivity(2) {
         }
         updateUi()
         bindCard()
+        profile_image.setImageResource(photos[currentIndex % mainList.size])
     }
 
     // ----------------------------------------------------------------------------

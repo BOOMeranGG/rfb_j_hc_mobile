@@ -9,6 +9,7 @@ import com.devian_orange.myapplication.model.chat.Message
 import com.stfalcon.chatkit.messages.MessagesListAdapter
 import kotlinx.android.synthetic.main.activity_faq_chat.*
 import com.stfalcon.chatkit.messages.MessageInput
+import java.util.concurrent.TimeUnit
 
 
 class FaqChatActivity : BaseActivity(4) {
@@ -30,8 +31,19 @@ class FaqChatActivity : BaseActivity(4) {
         input.setInputListener(MessageInput.InputListener {
             val msg = input.inputEditText.text.toString()
             val message = Message(user, msg)
-            val messageBot = Message(bot, msg)
+            val messageBot = Message(bot, "Для того чтобы зарегестрировать ИП вам нужно:\n" +
+                    "1. Определиться с видами деятельности\n" +
+                    "2. Выбрать систему налогообложения\n" +
+                    "УСН (упрощенная система налогообложения)\n" +
+                    "ЕНВД (единый налог на вмененный доход)\n" +
+                    "ПСН (патентная система налогообложения)\n" +
+                    "ЕСХН (единый сельскохозяйственный налог)\n" +
+                    "3. Подать заявление на регистрацию\n" +
+                    "Вот что нужно подать в налоговую:\n" +
+                    "заявление о регистрации в качестве ИП по форме Р 21001;\n" +
+                    "копию паспорта.")
             adapter.addToStart(message, false)
+            TimeUnit.MILLISECONDS.sleep(1250)
             adapter.addToStart(messageBot, false)
             true
         })
