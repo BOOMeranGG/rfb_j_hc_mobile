@@ -28,6 +28,6 @@ class AddOrderActivity : BaseActivity(3) {
         val price = price_input.text.toString().toInt()
         val description = description_input.text.toString()
 
-        val order = OrderDto(login, description, price)
+        //val order = OrderDto(login, description, price)
     }
 }

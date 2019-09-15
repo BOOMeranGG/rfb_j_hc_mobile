@@ -15,7 +15,7 @@ class NamePassFragment : Fragment() {
 
     interface Listener {
 
-        fun onRegister(password: String, isFreelancer: Boolean)
+        fun onRegister(password: String, fullName: String, isFreelancer: Boolean)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -51,7 +51,8 @@ class NamePassFragment : Fragment() {
 
         register_button.setOnClickListener {
             val password = password_input.text.toString()
-            listener.onRegister(password, radio_freelancer.isChecked)
+            val fullName = full_name_input.text.toString()
+            listener.onRegister(password, fullName, radio_freelancer.isChecked)
         }
     }
 }

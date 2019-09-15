@@ -2,6 +2,7 @@ package com.devian_orange.myapplication.ui.activities
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,26 +11,32 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devian_orange.myapplication.R
 import com.devian_orange.myapplication.model.dto.OrderDto
+import com.devian_orange.myapplication.web.WebController
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_orders_history.*
 import kotlinx.android.synthetic.main.list_item_order_history.view.*
 import java.util.*
 
-class OrdersHistoryActivity : BaseActivity(1) {
+class OrdersHistoryActivity : BaseActivity(1), WebController.OrdersController {
 
-    private var orders = listOf(
-        OrderDto("MothersaSG@yandex.ru", "desciption", 125000),
-        OrderDto("MothersaSG@yandex.ru", "desciption2", 135000),
-        OrderDto("MothersaSG@yandex.ru", "desciption3", 225000),
-        OrderDto("MothersaSG@yandex.ru", "desciption4", 185000),
-        OrderDto("MothersaSG@yandex.ru", "desciption5", 525000),
-        OrderDto("MothersaSG@yandex.ru", "desciption6", 145000),
-        OrderDto("MothersaSG@yandex.ru", "desciption7", 995000),
-        OrderDto("MothersaSG@yandex.ru", "desciption8", 148800),
-        OrderDto("MothersaSG@yandex.ru", "desciption9", 133700),
-        OrderDto("MothersaSG@yandex.ru", "desciption0", 22832200)
+    private var orders = listOf<OrderDto>(
+//        OrderDto("MothersaSG@yandex.ru", "desciption", 125000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption2", 135000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption3", 225000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption4", 185000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption5", 525000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption6", 145000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption7", 995000),
+//        OrderDto("MothersaSG@yandex.ru", "desciption8", 148800),
+//        OrderDto("MothersaSG@yandex.ru", "desciption9", 133700),
+//        OrderDto("MothersaSG@yandex.ru", "desciption0", 22832200)
     )
     private lateinit var orderRecyclerView: RecyclerView
     private lateinit var orderAdapter: OrderAdapter
+    private val webController = WebController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +48,8 @@ class OrdersHistoryActivity : BaseActivity(1) {
 
         setUpBottomNavigation()
         setUpRecycler()
+
+        webController.getAllOrders(this)
     }
 
     private fun setUpRecycler() {
@@ -48,6 +57,20 @@ class OrdersHistoryActivity : BaseActivity(1) {
         orderRecyclerView = findViewById(R.id.container_recycler_orders)
         orderRecyclerView.layoutManager = GridLayoutManager(this, 2)
         orderRecyclerView.adapter = orderAdapter
+    }
+
+//    private fun dataSource(): Observable<List<OrderDto>> {
+//        return Observable.just(webController.getAllOrders())
+//    }
+
+    private fun updateUi() {
+        orderAdapter.setPortfolio(orders)
+        orderAdapter.notifyDataSetChanged()
+    }
+
+    override fun onCompleteWaitingOrders(orders: List<OrderDto>) {
+        this.orders = orders
+        updateUi()
     }
 
     // ----------------------------------------------------------------------------

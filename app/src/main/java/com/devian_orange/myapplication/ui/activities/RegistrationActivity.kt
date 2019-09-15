@@ -4,16 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.devian_orange.myapplication.R
+import com.devian_orange.myapplication.model.dto.RegistrationDto
+import com.devian_orange.myapplication.model.dto.enums.AccountType
 import com.devian_orange.myapplication.presenters.RegistrationPresenter
 import com.devian_orange.myapplication.ui.fragments.EmailFragment
 import com.devian_orange.myapplication.ui.fragments.NamePassFragment
 import com.devian_orange.myapplication.utils.showToast
+import com.devian_orange.myapplication.web.WebController
 
 class RegistrationActivity : AppCompatActivity(), EmailFragment.Listener, NamePassFragment.Listener {
 
     private lateinit var email: String
-    //private var isFreelancer: Boolean = false
     private val registrationPresenter = RegistrationPresenter()
+    private val webController = WebController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +44,18 @@ class RegistrationActivity : AppCompatActivity(), EmailFragment.Listener, NamePa
         }
     }
 
-    override fun onRegister(password: String, isFreelancer: Boolean) {
+    override fun onRegister(password: String, fullName: String, isFreelancer: Boolean) {
         registrationPresenter.signUp(this, email, password, isFreelancer)
+        val registrationDto = RegistrationDto()
+        registrationDto.login = email
+        registrationDto.password = password
+        registrationDto.accountType = if (isFreelancer) {
+            AccountType.EXECUTOR
+        } else {
+            AccountType.CUSTOMER
+        }
+        registrationDto.fullName = fullName
+        webController.registerInWeb(registrationDto)
         goToHomeActivity()
     }
 

@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.devian_orange.myapplication.R
+import com.devian_orange.myapplication.model.dto.RegistrationDto
+import com.devian_orange.myapplication.model.dto.enums.AccountType
 import com.devian_orange.myapplication.ui.dialogs.PortfolioDialog
+import com.devian_orange.myapplication.web.WebController
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.list_item_portfolio.*
 import kotlinx.android.synthetic.main.list_item_portfolio.view.*
@@ -31,6 +34,7 @@ class HomeActivity : BaseActivity(0) {
 
     private lateinit var portfolioRecyclerView: RecyclerView
     private lateinit var portfolioAdapter: PortfolioAdapter
+    private val webController = WebController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,21 @@ class HomeActivity : BaseActivity(0) {
         info_image.setOnClickListener {
             addPortfolio()
         }
+        //test()
+    }
+
+    private fun test() {
+        val registrationDto = RegistrationDto()
+        registrationDto.login = "123"
+        registrationDto.password = "356"
+        registrationDto.accountType = if (true) {
+            AccountType.EXECUTOR
+        } else {
+            AccountType.CUSTOMER
+        }
+        registrationDto.fullName = "0098"
+        //webController.registerInWeb(registrationDto)
+        //webController.getAllOrders()
     }
 
     private fun addPortfolio() {
