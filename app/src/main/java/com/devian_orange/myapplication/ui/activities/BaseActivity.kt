@@ -27,6 +27,7 @@ abstract class BaseActivity(private val navNumber: Int) : AppCompatActivity() {
                 R.id.item_history -> OrdersHistoryActivity::class.java
                 R.id.item_share -> SearchActivity::class.java
                 R.id.item_add_order -> AddOrderActivity::class.java
+                R.id.item_chat -> FaqChatActivity::class.java
                 else -> {
                     Log.e(TAG, "Unknown nav item clicked $it")
                     null

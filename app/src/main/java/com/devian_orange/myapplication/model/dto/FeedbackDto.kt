@@ -1,4 +1,4 @@
-package com.devian_orange.myapplication.model
+package com.devian_orange.myapplication.model.dto
 
 class FeedbackDto(
     val review: String,

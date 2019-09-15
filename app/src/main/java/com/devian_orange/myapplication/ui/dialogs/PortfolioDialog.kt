@@ -5,12 +5,11 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
 import com.devian_orange.myapplication.R
 import kotlinx.android.synthetic.main.dialog_portfolio.*
 
-class PortfolioDialog(val imgId: Int, val textInfo: String) : DialogFragment() {
+class PortfolioDialog(private val imgId: Int, private val textInfo: String) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val v = LayoutInflater.from(activity).inflate(R.layout.dialog_portfolio, null)
@@ -24,7 +23,7 @@ class PortfolioDialog(val imgId: Int, val textInfo: String) : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         src_main.setImageResource(imgId)
         tv_main_info.text = textInfo
     }

@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devian_orange.myapplication.R
-import com.devian_orange.myapplication.model.OrderDto
+import com.devian_orange.myapplication.model.dto.OrderDto
 import kotlinx.android.synthetic.main.activity_orders_history.*
 import kotlinx.android.synthetic.main.list_item_order_history.view.*
 import java.util.*

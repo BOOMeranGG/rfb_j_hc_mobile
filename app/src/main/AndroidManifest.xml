@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.activities.FaqChatActivity">
+        </activity>
         <activity android:name=".ui.activities.AddPortfolioActivity">
         </activity>
         <activity android:name=".ui.activities.AddOrderActivity">

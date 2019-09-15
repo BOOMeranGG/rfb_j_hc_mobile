@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_action_add_order"
         android:title="" />
 
+    <item
+        android:id="@+id/item_chat"
+        android:icon="@drawable/ic_action_chat"
+        android:title="" />
+
 </menu>
