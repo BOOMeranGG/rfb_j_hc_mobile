@@ -30,7 +30,7 @@
 
             <TextView
                 style="@style/toolbar_title"
-                android:text="Profile"
+                android:text="Freelance Badoo"
                 app:layout_constraintStart_toEndOf="@id/close_image"
                 app:layout_constraintEnd_toStartOf="@id/info_image"
                 app:layout_constraintBottom_toBottomOf="parent"

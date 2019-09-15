@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devian_orange.myapplication.R
 import com.devian_orange.myapplication.model.CustomerDto
 import com.devian_orange.myapplication.model.FeedbackDto
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_search.*
+import kotlinx.android.synthetic.main.activity_search.close_image
 import kotlinx.android.synthetic.main.list_item_portfolio.view.*
 import java.util.*
 
@@ -71,6 +73,9 @@ class SearchActivity : BaseActivity(2) {
         setUpRecycler()
         bindCard()
 
+        close_image.setOnClickListener {
+            finish()
+        }
         motionLayout.setTransitionListener(object : TransitionAdapter() {
 
             override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
