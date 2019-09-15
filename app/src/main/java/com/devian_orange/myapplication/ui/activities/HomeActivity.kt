@@ -1,5 +1,6 @@
 package com.devian_orange.myapplication.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.devian_orange.myapplication.R
+import com.devian_orange.myapplication.ui.dialogs.PortfolioDialog
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.list_item_portfolio.*
 import kotlinx.android.synthetic.main.list_item_portfolio.view.*
 import java.util.*
 
@@ -39,6 +42,14 @@ class HomeActivity : BaseActivity(0) {
         close_image.setOnClickListener {
             finish()
         }
+        info_image.setOnClickListener {
+            addPortfolio()
+        }
+    }
+
+    private fun addPortfolio() {
+        val intent = Intent(this, AddPortfolioActivity::class.java)
+        startActivity(intent)
     }
 
     private fun setUpRecycler() {
@@ -65,6 +76,11 @@ class HomeActivity : BaseActivity(0) {
             }
             portfolioView.tv_info.text = info
             setRandomImage(portfolioView.img_preview)
+
+            portfolioView.setOnClickListener {
+                val dialog = PortfolioDialog(portfolioView.img_preview.id, info)
+                dialog.show(supportFragmentManager, "const")
+            }
         }
 
         private fun setRandomImage(img: ImageView) {
